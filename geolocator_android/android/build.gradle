@@ -12,13 +12,6 @@ buildscript {
     }
 }
 
-rootProject.allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
 apply plugin: 'com.android.library'
 
 android {
@@ -26,14 +19,18 @@ android {
         namespace("com.baseflow.geolocator")
     }
 
-    compileSdk flutter.compileSdkVersion
+    // Sử dụng giá trị cố định thay vì flutter.compileSdkVersion
+    compileSdk 34  // Khớp với compileSdk của project chính
 
     defaultConfig {
-        minSdkVersion flutter.minSdkVersion
+        minSdkVersion 23  // Khớp với minSdk của project chính
+        targetSdkVersion 34  // Thêm targetSdk để hoàn thiện cấu hình
     }
+
     lintOptions {
         disable 'InvalidPackage'
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
